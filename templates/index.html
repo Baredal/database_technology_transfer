@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .form-container {
+            margin-bottom: 20px;
+        }
+
+        .form-container select {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .action-buttons button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .action-buttons button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Select Table and Action</h1>
+        <div class="form-container">
+            <form action="/select_action" method="POST">
+                <label for="table">Select Table:</label>
+                <select name="table" id="table">
+                    {% for table in tables %}
+                    <option value="{{ table }}">{{ table }}</option>
+                    {% endfor %}
+                </select>
+                <br><br>
+                <div class="action-buttons">
+                    <button type="submit" name="action" value="find_record">Find</button>
+                    <button type="submit" name="action" value="add_record">Add</button>
+                    <button type="submit" name="action" value="modify_record">Modify</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
